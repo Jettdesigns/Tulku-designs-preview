@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulku Designs &amp; Gifts — Gallery Walk, Tamborine Mountain</title>
+<meta name="description" content="A family-run gallery of homewares, fashion and natural-fibre pieces from Nepal, hand-picked on Gallery Walk, Tamborine Mountain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stone:#EAE2CF;
+    --paper:#F9F5EA;
+    --paper-2:#F2ECDC;
+    --ink:#20241C;
+    --ink-soft:#4C5245;
+    --forest:#2E4034;
+    --forest-dark:#182620;
+    --saffron:#C1872E;
+    --madder:#9B3C2A;
+    --brass:#AD8A4C;
+    --line: rgba(32,36,28,.14);
+    --line-dark: rgba(249,245,234,.18);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--stone);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:500; margin:0; color:var(--ink);}
+  p{margin:0;}
+  ul{margin:0; padding:0; list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  ::selection{ background:var(--saffron); color:var(--paper); }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--madder);
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:1.4em;
+    height:1px;
+    background:var(--madder);
+    display:inline-block;
+  }
+  .eyebrow.on-dark{ color:var(--saffron); }
+  .eyebrow.on-dark::before{ background:var(--saffron); }
+
+  .wrap{
+    max-width:1220px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- gallery plate (signature component) ---------- */
+  .plate{
+    position:relative;
+    border:1px solid var(--line);
+    padding:22px 24px;
+    background:var(--paper);
+  }
+  .plate::before,.plate::after,
+  .plate .tick-br,.plate .tick-tr{
+    content:"";
+    position:absolute;
+    width:9px;
+    height:9px;
+    border:1px solid var(--brass);
+  }
+  .plate::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .plate::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  .plate-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    padding:22px 0;
+    transition:background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.solid{
+    background:rgba(234,226,207,.94);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .wordmark{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    letter-spacing:.02em;
+    color:var(--paper);
+    display:flex;
+    flex-direction:column;
+    line-height:1.05;
+    transition:color .4s ease;
+  }
+  header.solid .wordmark{ color:var(--forest-dark); }
+  .wordmark small{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.6rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--saffron);
+    margin-top:3px;
+  }
+  nav.links{ display:flex; gap:38px; }
+  nav.links a{
+    font-size:.86rem;
+    letter-spacing:.02em;
+    color:var(--paper);
+    position:relative;
+    padding-bottom:4px;
+    transition:color .4s ease;
+  }
+  header.solid nav.links a{ color:var(--ink); }
+  nav.links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0; height:1px;
+    background:currentColor;
+    transition:width .3s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+  .nav-cta{
+    border:1px solid var(--paper);
+    color:var(--paper);
+    padding:9px 20px;
+    font-size:.8rem;
+    letter-spacing:.04em;
+    transition:.4s ease;
+  }
+  header.solid .nav-cta{ border-color:var(--forest-dark); color:var(--forest-dark); }
+  .nav-cta:hover{ background:var(--saffron); border-color:var(--saffron); color:var(--forest-dark); }
+
+  .burger{ display:none; background:none; border:0; width:26px; height:18px; position:relative; }
+  .burger span{ position:absolute; left:0; right:0; height:1px; background:var(--paper); transition:.3s; }
+  header.solid .burger span{ background:var(--ink); }
+  .burger span:nth-child(1){ top:0; }
+  .burger span:nth-child(2){ top:8px; }
+  .burger span:nth-child(3){ top:16px; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    transform:scale(1.06);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(24,38,32,.35) 0%, rgba(24,38,32,.35) 40%, rgba(20,26,20,.86) 100%);
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding-bottom:76px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:60px;
+    align-items:end;
+  }
+  .hero h1{
+    color:var(--paper);
+    font-size:clamp(2.6rem, 5.4vw, 4.6rem);
+    line-height:1.04;
+    font-weight:500;
+    margin:18px 0 26px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--saffron); font-weight:400; }
+  .hero-sub{
+    color:rgba(249,245,234,.86);
+    font-size:1.05rem;
+    max-width:44ch;
+    margin-bottom:34px;
+  }
+  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 26px;
+    font-size:.86rem;
+    letter-spacing:.03em;
+    transition:.3s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--saffron); color:var(--forest-dark); }
+  .btn-primary:hover{ background:var(--paper); }
+  .btn-ghost{ border-color:rgba(249,245,234,.5); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--paper); background:rgba(249,245,234,.08); }
+
+  .hero-plate{
+    color:var(--paper);
+    border:1px solid var(--line-dark);
+    padding:20px 22px;
+    backdrop-filter:blur(4px);
+    background:rgba(24,38,32,.28);
+  }
+  .hero-plate .plate-label{ color:var(--saffron); }
+  .hero-plate p{ font-size:.86rem; color:rgba(249,245,234,.82); margin-top:8px; }
+
+  .scroll-cue{
+    position:absolute;
+    right:32px; bottom:26px;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:rgba(249,245,234,.7);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .scroll-cue .line{ width:1px; height:34px; background:rgba(249,245,234,.5); position:relative; overflow:hidden; }
+  .scroll-cue .line::after{
+    content:"";
+    position:absolute; top:-100%; left:0; right:0; height:100%;
+    background:var(--saffron);
+    animation:cue 2.2s ease-in-out infinite;
+  }
+  @keyframes cue{ 0%{top:-100%;} 60%{top:100%;} 100%{top:100%;} }
+
+  /* ---------- section basics ---------- */
+  section{ padding:112px 0; }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:56px;
+  }
+  .section-head h2{ font-size:clamp(2rem,3.4vw,2.9rem); margin-top:14px; max-width:16ch; }
+  .section-head .support{ max-width:34ch; color:var(--ink-soft); font-size:.98rem; padding-bottom:6px; }
+
+  /* ---------- intro / welcome ---------- */
+  .intro{ background:var(--paper); }
+  .intro-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:74px;
+    align-items:center;
+  }
+  .intro-media{ position:relative; }
+  .intro-media img{ width:100%; height:560px; object-fit:cover; }
+  .intro-tag{
+    position:absolute;
+    left:-28px; bottom:34px;
+    background:var(--forest);
+    color:var(--paper);
+    padding:18px 22px;
+    max-width:230px;
+  }
+  .intro-tag .plate-label{ color:var(--saffron); }
+  .intro-tag p{ font-size:.86rem; margin-top:8px; color:rgba(249,245,234,.85); }
+  .intro-copy p{ font-size:1.08rem; color:var(--ink-soft); margin-bottom:22px; max-width:52ch; }
+  .intro-copy p.lede{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    color:var(--ink);
+    line-height:1.4;
+    max-width:22ch;
+    margin-bottom:28px;
+  }
+  .intro-copy .sig{
+    margin-top:30px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--madder);
+  }
+
+  /* ---------- collections ---------- */
+  .collections{ background:var(--stone); }
+  .coll-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .coll-card{
+    background:var(--paper);
+    padding:38px 32px 32px;
+    min-height:270px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:background .4s ease;
+    position:relative;
+  }
+  .coll-card:hover{ background:var(--paper-2); }
+  .coll-swatch{ width:34px; height:5px; margin-bottom:26px; }
+  .coll-card h3{ font-size:1.32rem; font-weight:500; margin-bottom:12px; }
+  .coll-card p{ color:var(--ink-soft); font-size:.92rem; }
+  .coll-num{
+    position:absolute; top:32px; right:32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    color:var(--line);
+    color:rgba(32,36,28,.3);
+  }
+  .coll-foot{
+    margin-top:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.66rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex; align-items:center; gap:8px;
+  }
+
+  /* ---------- brand marquee ---------- */
+  .brandbar{
+    background:var(--forest-dark);
+    padding:54px 0;
+    overflow:hidden;
+  }
+  .brandbar .eyebrow{ margin:0 0 0 32px; }
+  .marquee{
+    display:flex;
+    white-space:nowrap;
+    margin-top:34px;
+  }
+  .marquee-track{
+    display:flex;
+    gap:64px;
+    animation:scroll 32s linear infinite;
+    padding-right:64px;
+  }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .marquee span{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.7rem;
+    color:rgba(249,245,234,.5);
+    flex:none;
+  }
+  .marquee span.hi{ color:var(--saffron); font-style:normal; font-weight:500;}
+
+  /* ---------- story ---------- */
+  .story{ background:var(--paper); }
+  .story-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:74px;
+    align-items:center;
+  }
+  .story-media{ position:relative; }
+  .story-media img{ width:100%; height:520px; object-fit:cover; }
+  .story-media .plate{
+    position:absolute;
+    right:-30px; top:-30px;
+    max-width:220px;
+    background:var(--stone);
+  }
+  .story-copy p{ font-size:1.05rem; color:var(--ink-soft); margin-bottom:20px; max-width:50ch; }
+  .story-copy h2{ margin-bottom:24px; font-size:clamp(1.9rem,3vw,2.6rem); }
+  .apollo-note{
+    margin-top:30px;
+    display:flex; gap:16px; align-items:flex-start;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+  .apollo-note .dot{ width:8px; height:8px; border-radius:50%; background:var(--madder); margin-top:8px; flex:none; }
+  .apollo-note p{ font-size:.92rem; color:var(--ink-soft); margin:0; }
+  .apollo-note b{ color:var(--ink); font-weight:600; }
+
+  /* ---------- testimonials ---------- */
+  .testimonials{ background:var(--stone); }
+  .t-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .t-card p.quote{
+    font-family:'Fraunces', serif;
+    font-size:1.18rem;
+    line-height:1.5;
+    color:var(--ink);
+    margin-bottom:22px;
+  }
+  .t-foot{ display:flex; justify-content:space-between; align-items:center; }
+  .t-name{ font-family:'IBM Plex Mono', monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--madder); }
+  .t-stars{ color:var(--saffron); font-size:.85rem; letter-spacing:2px; }
+
+  /* ---------- visit ---------- */
+  .visit{ background:var(--forest); color:var(--paper); }
+  .visit .eyebrow{ color:var(--saffron); }
+  .visit .eyebrow::before{ background:var(--saffron); }
+  .visit .section-head h2{ color:var(--paper); }
+  .visit .section-head .support{ color:rgba(249,245,234,.7); }
+  .visit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+  }
+  .visit-info dl{ display:grid; grid-template-columns:auto 1fr; gap:14px 22px; }
+  .visit-info dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--saffron);
+    padding-top:3px;
+  }
+  .visit-info dd{ margin:0; font-size:1rem; color:rgba(249,245,234,.92); }
+  .hours-row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-dark); font-size:.92rem; }
+  .hours-row span:first-child{ color:rgba(249,245,234,.68); font-family:'IBM Plex Mono', monospace; font-size:.76rem; letter-spacing:.05em;}
+  .hours-block{ margin-top:34px; }
+  .map-wrap{ border:1px solid var(--line-dark); height:100%; min-height:380px; filter:grayscale(.25) sepia(.12) saturate(1.1); }
+  .map-wrap iframe{ width:100%; height:100%; min-height:380px; border:0; display:block; }
+  .visit-ctas{ margin-top:36px; display:flex; gap:16px; flex-wrap:wrap; }
+
+  /* ---------- footer ---------- */
+  footer{ background:var(--forest-dark); color:rgba(249,245,234,.7); padding:64px 0 28px; }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:44px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .foot-word{ font-family:'Fraunces', serif; font-size:1.5rem; color:var(--paper); margin-bottom:14px; }
+  footer p{ font-size:.9rem; max-width:32ch; }
+  footer h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--saffron);
+    margin-bottom:18px;
+  }
+  footer li{ margin-bottom:10px; font-size:.92rem; }
+  footer li a:hover{ color:var(--paper); }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:24px; font-size:.78rem; color:rgba(249,245,234,.45);
+    flex-wrap:wrap; gap:12px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px){
+    .wrap{ padding:0 22px; }
+    nav.links, .nav-cta{ display:none; }
+    .burger{ display:block; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-plate{ display:none; }
+    .intro-grid, .story-grid, .visit-grid{ grid-template-columns:1fr; }
+    .intro-media img, .story-media img{ height:380px; }
+    .intro-tag{ left:0; }
+    .story-media .plate{ position:static; margin-top:20px; max-width:100%; }
+    .coll-grid{ grid-template-columns:1fr 1fr; }
+    .t-grid{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    section{ padding:76px 0; }
+  }
+  @media (max-width: 600px){
+    .coll-grid{ grid-template-columns:1fr; }
+    .section-head{ flex-direction:column; align-items:flex-start; gap:14px; }
+    .foot-grid{ grid-template-columns:1fr; }
+    .hero h1{ font-size:2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="#top" class="wordmark">Tulku <small>Designs &amp; Gifts</small></a>
+    <nav class="links">
+      <a href="#collections">Collections</a>
+      <a href="#story">Our Story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a href="#visit" class="nav-cta">Find Us on Gallery Walk</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img src="https://images.squarespace-cdn.com/content/v1/69cf07dff361ee7a9e2dd358/d2e24933-51c9-4bb3-a0f1-9dc9ff945e17/IMG_7246.jpeg" alt="Inside Tulku Designs & Gifts on Gallery Walk, Tamborine Mountain">
+  <div class="hero-inner wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow on-dark">Gallery Walk &middot; Tamborine Mountain</span>
+        <h1>Gathered from Nepal.<br>Gifted <em>on the mountain.</em></h1>
+        <p class="hero-sub">A family-run gallery of homewares, fashion and natural-fibre pieces — leather, linen, wool and silk — hand-picked one shopfront at a time on Gallery Walk.</p>
+        <div class="btn-row">
+          <a href="#visit" class="btn btn-primary">Plan Your Visit</a>
+          <a href="#collections" class="btn btn-ghost">See What We Carry</a>
+        </div>
+      </div>
+      <div class="hero-plate reveal">
+        <span class="plate-label">Est. on the mountain</span>
+        <p>Run by Junu &amp; Andreas, with Apollo greeting visitors at the door. Quality pieces, honestly priced — that's the whole idea.</p>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<section class="intro" id="story">
+  <div class="wrap intro-grid">
+    <div class="intro-media reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/69cf07dff361ee7a9e2dd358/2d082e44-216e-4701-a71e-19451b26ec21/IMG_7242.jpeg" alt="Curated homewares display inside Tulku Designs & Gifts">
+      <div class="intro-tag">
+        <span class="plate-label">In the owner's words</span>
+        <p>"Thank you for visiting our new Gallery." — the name our regulars now use for the shop.</p>
+      </div>
+    </div>
+    <div class="intro-copy reveal">
+      <span class="eyebrow">Not just a shop</span>
+      <p class="lede">We call it the Gallery, because every piece in here was chosen, not stocked.</p>
+      <p>Tulku Designs &amp; Gifts sits on Gallery Walk, Tamborine Mountain — a warm, family-run shopfront of homewares, women's &amp; men's fashion, children's gifts and a curated line of natural-fibre clothing carried down from Nepal.</p>
+      <p>Leather, linen, wool, silk and cotton, alongside brands like My Funky Bags, Millie and Mon, Marukanou, Love Lunamei and Olive Oi Skincare. Nothing mass-produced, nothing overpriced — just things worth having, at prices that still surprise people.</p>
+      <p>Pop in, meet the family, say hello to Apollo on the door.</p>
+      <div class="sig">Junu &amp; Andreas, Tulku Designs &amp; Gifts</div>
+    </div>
+  </div>
+</section>
+
+<section class="collections" id="collections">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">What's in the gallery</span>
+        <h2>Six rooms, one small shopfront.</h2>
+      </div>
+      <p class="support">Every category below shares a shelf, a rail, or a corner of the same little gallery — that's rather the point of browsing here.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="coll-grid reveal">
+      <div class="coll-card">
+        <div><div class="coll-swatch" style="background:var(--forest)"></div>
+        <h3>Homewares</h3>
+        <p>Linen, timber and considered clutter for the table, the shelf and the mantel.</p></div>
+        <div class="coll-foot">Shelf &amp; table</div>
+      </div>
+      <div class="coll-card">
+        <div><div class="coll-swatch" style="background:var(--madder)"></div>
+        <h3>Women's &amp; Men's Fashion</h3>
+        <p>Easy shapes in natural fibres — the kind of pieces that get worn, not hung.</p></div>
+        <div class="coll-foot">Wearable</div>
+      </div>
+      <div class="coll-card">
+        <div><div class="coll-swatch" style="background:var(--saffron)"></div>
+        <h3>The Nepal Collection</h3>
+        <p>Leather, wool and silk, carried down from artisans in Nepal — our founding line.</p></div>
+        <div class="coll-foot">Handmade, imported</div>
+      </div>
+      <div class="coll-card">
+        <div><div class="coll-swatch" style="background:var(--forest)"></div>
+        <h3>Children's Gifts</h3>
+        <p>Small, well-made things for small people — nothing that ends up in landfill by June.</p></div>
+        <div class="coll-foot">Little ones</div>
+      </div>
+      <div class="coll-card">
+        <div><div class="coll-swatch" style="background:var(--madder)"></div>
+        <h3>Wellness &amp; Skincare</h3>
+        <p>Olive Oi Skincare and other everyday rituals worth keeping on the bathroom shelf.</p></div>
+        <div class="coll-foot">Olive Oi &amp; friends</div>
+      </div>
+      <div class="coll-card">
+        <div><div class="coll-swatch" style="background:var(--saffron)"></div>
+        <h3>The Curiosity Room</h3>
+        <p>Antiques and one-off treasures next door — a bonus stop on the same visit.</p></div>
+        <div class="coll-foot">Next door</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brandbar">
+  <span class="eyebrow on-dark">Brands we carry</span>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>My Funky Bags</span>
+      <span class="hi">Millie and Mon</span>
+      <span>Marukanou</span>
+      <span class="hi">Love Lunamei</span>
+      <span>Olive Oi Skincare</span>
+      <span class="hi">&amp; a rotating cast of makers</span>
+      <span>My Funky Bags</span>
+      <span class="hi">Millie and Mon</span>
+      <span>Marukanou</span>
+      <span class="hi">Love Lunamei</span>
+      <span>Olive Oi Skincare</span>
+      <span class="hi">&amp; a rotating cast of makers</span>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap story-grid">
+    <div class="story-copy reveal">
+      <span class="eyebrow">Family run</span>
+      <h2>Junu, Andreas, and Apollo on the door.</h2>
+      <p>Visitors keep telling us the same thing: it's the welcome that brings them back as much as the shelves. That's not by accident — this is a small, family-run gallery, and it's usually Junu or Andreas you'll meet when you walk in, not staff working a shift.</p>
+      <p>We buy for the shop the way we'd buy for our own home — natural materials, honest prices, and nothing we wouldn't want to own ourselves. If we don't have quite the right gift, we'll happily point you toward something that will be.</p>
+      <div class="apollo-note">
+        <span class="dot"></span>
+        <p><b>Apollo greets everyone at the door.</b> He's become something of a local fixture on Gallery Walk — regulars stop to say hello to him as much as to us.</p>
+      </div>
+    </div>
+    <div class="story-media reveal">
+      <img src="https://images.squarespace-cdn.com/content/v1/69cf07dff361ee7a9e2dd358/c8391aaf-a030-4b0a-8cd9-e902b1bb1095/29F54221-EE4E-4632-995B-82CA9DA77802.jpeg" alt="Textiles and gifts on display at Tulku Designs & Gifts">
+      <div class="plate">
+        <span class="plate-label">Sourced, not sourced-out</span>
+        <p style="margin-top:10px; font-size:.9rem; color:var(--ink-soft);">Every natural-fibre piece in the Nepal Collection is chosen in person, not ordered from a catalogue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">From Gallery Walk regulars</span>
+        <h2>What people say after they visit.</h2>
+      </div>
+      <p class="support">Unedited sentiment from Google reviews — the ambience and the welcome come up as often as the gifts do.</p>
+    </div>
+    <div class="t-grid reveal">
+      <div class="plate t-card">
+        <p class="quote">"Ambience, service and prices — all five stars. I can't wait to come back."</p>
+        <div class="t-foot"><span class="t-name">Sushma S.</span><span class="t-stars">★★★★★</span></div>
+      </div>
+      <div class="plate t-card">
+        <p class="quote">"Lovely quality throughout — whoever curates this shop has a real eye for it."</p>
+        <div class="t-foot"><span class="t-name">Saskia G.</span><span class="t-stars">★★★★★</span></div>
+      </div>
+      <div class="plate t-card">
+        <p class="quote">"A beautiful range of gifts, and Apollo out the front greeting customers."</p>
+        <div class="t-foot"><span class="t-name">Hannah H.</span><span class="t-stars">★★★★★</span></div>
+      </div>
+      <div class="plate t-card">
+        <p class="quote">"A shopper's delight — the little antiques room next door is a lovely bonus."</p>
+        <div class="t-foot"><span class="t-name">Sandy S.</span><span class="t-stars">★★★★★</span></div>
+      </div>
+      <div class="plate t-card">
+        <p class="quote">"Leather, linen, wool, silk — genuinely quality pieces carried from Nepal."</p>
+        <div class="t-foot"><span class="t-name">Avril B.</span><span class="t-stars">★★★★★</span></div>
+      </div>
+      <div class="plate t-card">
+        <p class="quote">"A beautiful little gem on the mountain — I'd highly recommend a visit."</p>
+        <div class="t-foot"><span class="t-name">Amrita T.</span><span class="t-stars">★★★★★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Come and visit</span>
+        <h2>Find us on Gallery Walk.</h2>
+      </div>
+      <p class="support">An easy stop on the Gallery Walk strip — plenty of company either side, and Apollo will let you know you've arrived.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <dl>
+          <dt>Address</dt>
+          <dd>Shop, 117 Long Road<br>Tamborine Mountain QLD 4272</dd>
+          <dt>Phone</dt>
+          <dd>0435 450 381</dd>
+          <dt>Instagram</dt>
+          <dd>@tulkudesignsandgifts</dd>
+        </dl>
+        <div class="hours-block">
+          <div class="hours-row"><span>MONDAY</span><span>10:00 AM – 4:00 PM</span></div>
+          <div class="hours-row"><span>TUESDAY</span><span>Closed</span></div>
+          <div class="hours-row"><span>WED – SAT</span><span>10:00 AM – 4:00 PM</span></div>
+          <div class="hours-row"><span>SUNDAY</span><span>10:00 AM – 4:00 PM</span></div>
+        </div>
+        <div class="visit-ctas">
+          <a class="btn btn-primary" href="https://www.google.com/maps?q=117+Long+Road+Tamborine+Mountain+QLD+4272" target="_blank" rel="noopener">Get Directions</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/tulkudesignsandgifts/" target="_blank" rel="noopener">Follow on Instagram</a>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=117+Long+Road+Tamborine+Mountain+QLD+4272&output=embed" allowfullscreen title="Map to Tulku Designs & Gifts"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-word">Tulku Designs &amp; Gifts</div>
+        <p>A family-run gallery of homewares, fashion and natural-fibre pieces on Gallery Walk, Tamborine Mountain.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>117 Long Road</li>
+          <li>Tamborine Mountain QLD 4272</li>
+          <li>0435 450 381</li>
+          <li><a href="https://www.instagram.com/tulkudesignsandgifts/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Tulku Designs &amp; Gifts, Tamborine Mountain.</span>
+      <span>Gallery Walk, Long Road</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    if (window.scrollY > 40) header.classList.add('solid');
+    else header.classList.remove('solid');
+  };
+  document.addEventListener('scroll', onScroll);
+  onScroll();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const burger = document.querySelector('.burger');
+  const links = document.querySelector('nav.links');
+  burger.addEventListener('click', () => {
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText += open ? '' : 'position:fixed; top:70px; left:0; right:0; background:var(--stone); flex-direction:column; padding:24px 32px; gap:20px; border-bottom:1px solid var(--line);';
+    document.querySelectorAll('nav.links a').forEach(a => a.style.color = 'var(--ink)');
+  });
+</script>
+
+</body>
+</html>
